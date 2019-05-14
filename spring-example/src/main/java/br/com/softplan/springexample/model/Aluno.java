@@ -1,19 +1,24 @@
-package br.com.softplan.model;
+package br.com.softplan.springexample.model;
 
-import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
-
-import javax.persistence.Entity;
 import java.util.Date;
 
-@Entity
-public class Aluno extends PanacheEntityBase {
+public class Aluno {
 
+    private Long id;
     private String nome;
     private String sobrenome;
     private String nomeMae;
     private String nomePai;
     private Date dataNascimento;
     private Turma turma;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getSobrenome() {
         return sobrenome;
