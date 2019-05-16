@@ -2,17 +2,26 @@ package br.com.softplan.model;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 
-import javax.persistence.Entity;
+import javax.persistence.*;
 import java.util.Date;
+
+import static javax.persistence.GenerationType.AUTO;
 
 @Entity
 public class Aluno extends PanacheEntityBase {
+
+    @Id
+    @GeneratedValue(strategy = AUTO)
+    private Integer id;
 
     private String nome;
     private String sobrenome;
     private String nomeMae;
     private String nomePai;
     private Date dataNascimento;
+
+    @ManyToOne
+    @JoinColumn(name="turma_id", referencedColumnName="id",nullable=false)
     private Turma turma;
 
     public String getSobrenome() {

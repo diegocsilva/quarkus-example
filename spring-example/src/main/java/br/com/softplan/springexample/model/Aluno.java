@@ -2,6 +2,7 @@ package br.com.softplan.springexample.model;
 
 import java.util.Date;
 
+
 public class Aluno {
 
     private Long id;

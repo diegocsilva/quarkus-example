@@ -4,11 +4,20 @@ import br.com.softplan.domain.PeriodoEnum;
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+import static javax.persistence.GenerationType.AUTO;
 
 @Entity
 public class Turma extends PanacheEntityBase {
 
+    @Id
+    @GeneratedValue(strategy = AUTO)
+    private Integer id;
+
     private Integer ano;
+
     private PeriodoEnum periodo;
 
     public Integer getAno() {

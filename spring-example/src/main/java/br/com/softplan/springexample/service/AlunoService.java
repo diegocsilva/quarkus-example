@@ -1,8 +1,9 @@
 package br.com.softplan.springexample.service;
 
-import javax.enterprise.context.RequestScoped;
 
-@RequestScoped
+import org.springframework.stereotype.Service;
+
+@Service
 public class AlunoService {
 
 

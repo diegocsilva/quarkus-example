@@ -15,4 +15,8 @@ public class AlunoService {
     public Aluno findByNome(String nome){
         return repository.findByNome(nome);
     }
+
+    public void save(Aluno aluno) {
+        repository.persist(aluno);
+    }
 }

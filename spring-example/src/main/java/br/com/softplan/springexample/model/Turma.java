@@ -1,14 +1,11 @@
 package br.com.softplan.springexample.model;
 
-import br.com.softplan.domain.PeriodoEnum;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import br.com.softplan.springexample.domain.PeriodoEnum;
 
-@Entity
 public class Turma {
 
-    @Id
+
     private Long id;
     private Integer ano;
     private PeriodoEnum periodo;
