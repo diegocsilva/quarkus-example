@@ -3,7 +3,6 @@ package br.com.softplan.model;
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 
 import javax.persistence.*;
-import java.util.Date;
 
 import static javax.persistence.GenerationType.AUTO;
 
@@ -18,11 +17,30 @@ public class Aluno extends PanacheEntityBase {
     private String sobrenome;
     private String nomeMae;
     private String nomePai;
-    private Date dataNascimento;
+    private String dataNascimento;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="turma_id", referencedColumnName="id",nullable=false)
     private Turma turma;
+
+    public Aluno merge(Aluno aluno) {
+        if (!this.nome.equals(aluno.nome)){
+            this.nome = aluno.nome;
+        }
+        if (!this.sobrenome.equals(aluno.sobrenome)){
+            this.sobrenome = aluno.sobrenome;
+        }
+        if (!this.nomeMae.equals(aluno.nomeMae)){
+            this.nomeMae = aluno.getNomeMae();
+        }
+        if (!this.nomePai.equals(aluno.nomePai)){
+            this.nomePai = aluno.getNomePai();
+        }
+        if (!this.dataNascimento.equals(aluno.dataNascimento)){
+            this.dataNascimento = aluno.getDataNascimento();
+        }
+        return this;
+    }
 
     public String getSobrenome() {
         return sobrenome;
@@ -56,11 +74,11 @@ public class Aluno extends PanacheEntityBase {
         this.nomePai = nomePai;
     }
 
-    public Date getDataNascimento() {
+    public String getDataNascimento() {
         return dataNascimento;
     }
 
-    public void setDataNascimento(Date dataNascimento) {
+    public void setDataNascimento(String dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
 
@@ -70,5 +88,13 @@ public class Aluno extends PanacheEntityBase {
 
     public void setTurma(Turma turma) {
         this.turma = turma;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 }

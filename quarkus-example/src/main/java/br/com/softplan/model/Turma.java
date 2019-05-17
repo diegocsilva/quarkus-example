@@ -20,6 +20,16 @@ public class Turma extends PanacheEntityBase {
 
     private PeriodoEnum periodo;
 
+    public Turma merge(Turma turma){
+        if (!this.ano.equals(turma.getAno())){
+            this.ano = turma.getAno();
+        }
+        if (!this.periodo.equals(turma.getPeriodo())){
+            this.periodo = turma.periodo;
+        }
+        return this;
+    }
+
     public Integer getAno() {
         return ano;
     }
@@ -34,5 +44,13 @@ public class Turma extends PanacheEntityBase {
 
     public void setPeriodo(PeriodoEnum periodo) {
         this.periodo = periodo;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 }
