@@ -19,6 +19,9 @@ public class AlunoService {
     private TurmaService turmaService;
 
     public Aluno getByName(String nome){
+        if(nome==null || nome.isEmpty()){
+            throw new RuntimeOperationsException(new RuntimeException(), "Parametro aluno vazio!");
+        }
         return repository.findByNome(nome);
     }
 

@@ -9,7 +9,6 @@ import static org.hamcrest.CoreMatchers.is;
 @QuarkusTest
 public class GreetingResourceTest {
 
-    @Test
     public void testHelloEndpoint() {
         given()
           .when().get("/hello")
