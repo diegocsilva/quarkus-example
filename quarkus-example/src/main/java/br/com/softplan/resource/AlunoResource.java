@@ -23,15 +23,12 @@ public class AlunoResource {
     private AlunoService service;
 
     @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    @Transactional
     public Response list() {
         List<Aluno> aluno = service.list();
         return Response.ok(aluno).build();
     }
 
     @POST
-    @Produces(MediaType.APPLICATION_JSON)
     @Transactional
     public Response create(Aluno aluno) {
         service.create(aluno);
@@ -39,7 +36,6 @@ public class AlunoResource {
     }
 
     @PUT
-    @Produces(MediaType.APPLICATION_JSON)
     @Transactional
     public Response update(Aluno aluno) {
         service.update(aluno);
@@ -47,18 +43,15 @@ public class AlunoResource {
     }
 
     @DELETE
-    @Produces(MediaType.APPLICATION_JSON)
-    @Transactional
     @Path("{id}")
+    @Transactional
     public Response delete(@PathParam("id") Integer id) {
         service.delete(id);
         return Response.ok().build();
     }
 
     @GET
-    @Produces(MediaType.APPLICATION_JSON)
     @Path("/{name}")
-    @Transactional
     public Response getByName(@PathParam("name")String name) {
         Aluno aluno = service.getByName(name);
         return Response.ok(aluno).build();

@@ -1,0 +1,12 @@
+version: '3.4'
+services:
+    app:
+      image: build_native
+      build: .
+      container_name: build_native
+      working_dir: /opt/quarkus_native/
+      volumes:
+        - ../../../:/opt/quarkus_native
+        - $HOME/.m2:/root/
+      command: >
+          bash -c "mvn package -Pnative -X"
